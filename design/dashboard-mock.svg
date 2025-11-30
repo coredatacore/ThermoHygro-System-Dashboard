@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <defs>
+    <style>
+      .bg { fill: #f3f6fb; }
+      .fg { fill: #0f172a; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+      .glass { fill: rgba(255,255,255,0.85); stroke: #d1d5db; stroke-width: 1; }
+      .pill { fill: rgba(0,0,0,0.06); }
+      .accent { fill: #3b82f6; }
+      .green { fill: #22c55e; }
+      .red { fill: #ef4444; }
+      .shadow { filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08)); }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1440" height="1024"/>
+
+  <!-- Header -->
+  <g transform="translate(170,40)">
+    <text class="fg" font-size="22" font-weight="600">ThermoHygro System Dashboard</text>
+    <!-- Dark mode toggle -->
+    <g transform="translate(980,-10)">
+      <text class="fg" font-size="14" y="20">Dark Mode</text>
+      <rect x="100" y="0" rx="14" ry="14" width="52" height="28" fill="rgba(0,0,0,0.08)" stroke="#d1d5db"/>
+      <circle cx="116" cy="14" r="11" fill="#ffffff"/>
+    </g>
+  </g>
+
+  <!-- Status container -->
+  <g transform="translate(170,110)">
+    <!-- Left pill -->
+    <g>
+      <rect class="pill" x="0" y="0" rx="999" ry="999" width="300" height="40"/>
+      <circle class="green" cx="20" cy="20" r="6"/>
+      <text class="fg" x="40" y="25" font-size="14">All Systems Normal</text>
+    </g>
+    <!-- Center pill -->
+    <g transform="translate(360,0)">
+      <rect class="pill" x="0" y="0" rx="999" ry="999" width="320" height="40"/>
+      <rect class="accent" x="14" y="12" width="16" height="16" rx="8"/>
+      <text class="fg" x="40" y="25" font-size="14">Last Updated: --</text>
+    </g>
+    <!-- Right pill -->
+    <g transform="translate(720,0)">
+      <rect class="pill" x="0" y="0" rx="999" ry="999" width="240" height="40"/>
+      <circle class="green" cx="20" cy="20" r="6"/>
+      <text class="fg" x="40" y="25" font-size="14">Connected</text>
+    </g>
+  </g>
+
+  <!-- Gauge cards row -->
+  <g transform="translate(170,200)">
+    <!-- Temperature card -->
+    <g class="shadow">
+      <rect class="glass" x="0" y="0" rx="16" ry="16" width="320" height="280" fill="#ffffff"/>
+      <text class="fg" x="16" y="30" font-size="18" font-weight="600">Temperature</text>
+      <!-- semi-circle gauge -->
+      <path d="M40,210 A120,120 0 0 1 280,210" fill="none" stroke="#22C55E" stroke-width="20"/>
+      <path d="M160,210 A120,120 0 0 1 280,210" fill="none" stroke="#EF4444" stroke-width="20"/>
+      <!-- needle -->
+      <line x1="160" y1="210" x2="100" y2="160" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="160" cy="210" r="6" fill="#0f172a"/>
+      <text class="fg" x="16" y="240" font-size="20" font-weight="700">-- °C</text>
+      <text class="fg" x="16" y="262" font-size="14">--</text>
+    </g>
+
+    <!-- Humidity card -->
+    <g transform="translate(360,0)" class="shadow">
+      <rect class="glass" x="0" y="0" rx="16" ry="16" width="320" height="280" fill="#ffffff"/>
+      <text class="fg" x="16" y="30" font-size="18" font-weight="600">Humidity</text>
+      <!-- semi-circle gauge -->
+      <path d="M40,210 A120,120 0 0 1 280,210" fill="none" stroke="#3B82F6" stroke-width="20"/>
+      <path d="M160,210 A120,120 0 0 1 280,210" fill="none" stroke="#EF4444" stroke-width="20"/>
+      <!-- needle -->
+      <line x1="160" y1="210" x2="220" y2="160" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="160" cy="210" r="6" fill="#0f172a"/>
+      <text class="fg" x="16" y="240" font-size="20" font-weight="700">-- %</text>
+      <text class="fg" x="16" y="262" font-size="14">--</text>
+    </g>
+  </g>
+
+  <!-- Chart card -->
+  <g transform="translate(170,510)" class="shadow">
+    <rect class="glass" x="0" y="0" rx="16" ry="16" width="700" height="280" fill="#ffffff"/>
+    <text class="fg" x="16" y="30" font-size="18" font-weight="600">Temperature / Humidity History</text>
+    <!-- simple chart grid -->
+    <g transform="translate(16,50)">
+      <rect x="0" y="0" width="668" height="210" fill="none" stroke="#e5e7eb"/>
+      <path d="M0 42 H668 M0 84 H668 M0 126 H668 M0 168 H668" stroke="#e5e7eb"/>
+      <!-- lines -->
+      <path d="M10 160 L80 120 L150 130 L220 100 L290 110 L360 80 L430 100 L500 70 L570 90 L640 60" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <path d="M10 140 L80 150 L150 140 L220 130 L290 120 L360 110 L430 120 L500 100 L570 110 L640 90" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- Table card -->
+  <g transform="translate(900,510)" class="shadow">
+    <rect class="glass" x="0" y="0" rx="16" ry="16" width="370" height="280" fill="#ffffff"/>
+    <g transform="translate(16,16)">
+      <text class="fg" font-size="18" font-weight="600">Last Readings</text>
+      <rect x="250" y="-6" rx="10" ry="10" width="100" height="28" fill="rgba(59,130,246,0.12)" stroke="#d1d5db"/>
+      <text class="fg" x="265" y="14" font-size="13">Export PDF</text>
+    </g>
+    <g transform="translate(16,56)">
+      <!-- headers -->
+      <text class="fg" font-size="13" font-weight="600" x="0" y="0">Time</text>
+      <text class="fg" font-size="13" font-weight="600" x="160" y="0">Temp °C</text>
+      <text class="fg" font-size="13" font-weight="600" x="260" y="0">Humidity %</text>
+      <!-- rows -->
+      <g transform="translate(0,16)">
+        <text class="fg" font-size="13" y="0">--</text>
+        <text class="fg" font-size="13" x="160" y="0">--</text>
+        <text class="fg" font-size="13" x="260" y="0">--</text>
+        <line x1="0" y1="6" x2="340" y2="6" stroke="#e5e7eb"/>
+      </g>
+      <g transform="translate(0,40)">
+        <text class="fg" font-size="13" y="0">--</text>
+        <text class="fg" font-size="13" x="160" y="0">--</text>
+        <text class="fg" font-size="13" x="260" y="0">--</text>
+        <line x1="0" y1="6" x2="340" y2="6" stroke="#e5e7eb"/>
+      </g>
+      <g transform="translate(0,64)">
+        <text class="fg" font-size="13" y="0">--</text>
+        <text class="fg" font-size="13" x="160" y="0">--</text>
+        <text class="fg" font-size="13" x="260" y="0">--</text>
+        <line x1="0" y1="6" x2="340" y2="6" stroke="#e5e7eb"/>
+      </g>
+    </g>
+  </g>
+
+</svg>

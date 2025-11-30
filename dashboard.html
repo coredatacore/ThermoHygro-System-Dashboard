@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ThermoHygro System</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+</head>
+<body>
+
+<header class="main-header container">
+    <h2>ThermoHygro System Dashboard</h2>
+    <div class="header-actions">
+        <div class="switch-wrap">
+            <span class="switch-label">Dark Mode</span>
+            <label class="switch">
+                <input id="darkSwitch" type="checkbox" aria-label="Toggle dark mode">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+</header>
+
+<section class="status-container glass container">
+    <div class="status-left">
+        <div class="status-pill">
+            <span id="systemStatusDot" class="status-dot green"></span>
+            <span class="status-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12.6l-2-2-1.2 1.2 3.2 3.2 6.2-6.2-1.2-1.2z" fill="currentColor"/>
+                </svg>
+            </span>
+            <span id="systemStatusText">All Systems Normal</span>
+        </div>
+    </div>
+
+    <div class="status-center">
+        <div class="status-pill">
+            <span class="status-icon clock" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.15"/>
+                    <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </svg>
+            </span>
+            <span id="lastUpdatedText" role="status" aria-live="polite">Last Updated: --</span>
+        </div>
+    </div>
+
+    <div class="status-right">
+        <div class="status-pill">
+            <span id="connectionDot" class="status-dot green"></span>
+            <span class="status-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="4" fill="currentColor"/>
+                </svg>
+            </span>
+            <span id="connectionText" role="status" aria-live="polite">Connected</span>
+        </div>
+    </div>
+</section>
+
+
+<main class="container">
+    <div class="gauge-row">
+        <div class="gauge-card glass">
+            <div class="card-header"><h3>Temperature</h3><button class="info-btn" data-type="temp">i</button></div>
+            <div class="canvas-wrap"><canvas id="tempGauge"></canvas></div>
+            <p id="tempValue" class="gauge-value">-- °C</p>
+            <p id="tempStatus" class="gauge-status">--</p>
+        </div>
+
+        <div class="gauge-card glass">
+            <div class="card-header"><h3>Humidity</h3><button class="info-btn" data-type="hum">i</button></div>
+            <div class="canvas-wrap"><canvas id="humGauge"></canvas></div>
+            <p id="humValue" class="gauge-value">-- %</p>
+            <p id="humStatus" class="gauge-status">--</p>
+        </div>
+    </div>
+
+    <div class="chart-card glass">
+        <h3>Temperature / Humidity History</h3>
+        <div class="chart-scroll"><div class="chart-wrap"><canvas id="historyChart"></canvas></div></div>
+    </div>
+
+    <div class="table-card glass">
+        <div class="card-header">
+            <h3>Last Readings</h3>
+            <button id="exportPdfBtn" class="export-btn" aria-label="Export Last Readings as PDF">Export PDF</button>
+        </div>
+        <div class="table-scroll">
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Temp °C</th>
+                        <th>Humidity %</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<section class="container">
+    <div class="glass" style="padding:16px; margin-top:16px;">
+        <div class="card-header" style="margin-bottom:8px; align-items:center; display:flex; justify-content:space-between;">
+            <h3>Alerts</h3>
+        </div>
+        <form id="alertsForm">
+            <label style="display:flex; align-items:center; gap:8px;">
+                <input id="emailAlertsToggle" type="checkbox"> Update me!
+            </label>
+            <div style="display:flex; gap:8px; margin-top:8px;">
+                <input id="alertsEmail" type="email" placeholder="you@example.com" style="flex:1; padding:8px;" required>
+                <button type="submit" class="export-btn">Save</button>
+                <button type="button" id="sendTestAlertBtn" class="export-btn">Send Test</button>
+            </div>
+            <p id="alertsMsg" style="margin-top:8px;"></p>
+        </form>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

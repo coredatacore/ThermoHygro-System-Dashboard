@@ -433,7 +433,7 @@ async function updateData() {
 
 function fmt(n, decimals, unit) {
     if (isNaN(n)) return `-- ${unit}`;
-    return `${Number(n).toFixed(decimals).replace('.', ',')}${unit}`;
+    return `${Number(n).toFixed(decimals)}${unit}`;
 }
 
 function formatTimestamp(d) {
